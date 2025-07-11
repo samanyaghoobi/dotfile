@@ -1,0 +1,15 @@
+alias ls='eza --icons'
+alias l='ls -l'
+alias la='ls -a'
+alias lla='ls -la'
+alias lt='ls --tree'
+
+alias code='code . --new-window'
+alias zshConfig='nano ~/.zshrc'
+alias frEnable="setxkbmap -layout us,ir -option 'grp:alt_shift_toggle'"
+alias "ip a"="ip --color=always a"
+
+alias sshNet='ssh root@45.145.6.153'
+alias sshNet2='ssh root@185.31.200.115'
+alias sshJenkins20='ssh jenkins@192.168.50.20'
+alias sinaComSis='wine "/home/saman/.wine/drive_c/Program Files/Sina/Sina Communication System Co/SinaAutomationMain.exe"'

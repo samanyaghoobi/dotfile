@@ -1,17 +1,13 @@
 # Aliases
-alias ls='eza --icons'
-alias l='ls -l'
-alias la='ls -a'
-alias lla='ls -la'
-alias lt='ls --tree'
-
+alias ls='eza -l -sname'
 alias code='code . --new-window'
 alias zshConfig='nano ~/.zshrc'
-
+alias lss='eza'
 alias frEnable="setxkbmap -layout us,ir -option 'grp:alt_shift_toggle'"
-alias "ip a"="ip --color=always a"
-
+alias ipa='ip -c a'
 # SSH Aliases
-alias sshNet='ssh root@45.145.6.153'
-alias sshNet2='ssh root@185.31.200.115'
-alias sshJenkins20='ssh jenkins@192.168.50.20'
+
+alias gitPushNoEdite="git add . && git commit --amend --no-edit && git push -f origin HEAD"
+alias banchmark="wget -qO- bench.sh | bash"
+
+alias sinaAuth="WINEPREFIX=~/.wine-sina wine ~/.wine-sina/drive_c/Program\ Files/Sina/Sina\ Communication\ System\ Co/SinaAutomation.exe"

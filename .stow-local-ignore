@@ -1,1 +1,7 @@
 scripts
+
+
+.git/*
+README
+hotspot-recover.sh
+.gitignore

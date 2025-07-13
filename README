@@ -1,0 +1,111 @@
+# Dotfiles with Encrypted SSH Key
+
+This repository contains my personal configuration files (dotfiles), including an **encrypted SSH private key** protected using [age](https://github.com/FiloSottile/age).
+The private key is not stored in plaintext, ensuring security when syncing or publishing the repo.
+
+---
+
+## 🔐 Requirements
+
+To set up this configuration on a new machine, you need:
+
+* `age` (for decrypting the SSH key)
+* `stow` (for managing dotfiles)
+* `git` (to clone the repo)
+
+---
+
+## 🧪 Setup on a New Machine
+
+Follow these steps to install your dotfiles and set up the SSH key.
+
+### 1. Clone the dotfiles repository
+
+```bash
+git clone https://github.com/yourusername/dotfiles.git ~/.dotfiles
+cd ~/.dotfiles
+```
+
+> Replace the Git URL with your own private repo if needed.
+
+---
+
+### 2. Decrypt your SSH private keyid_ed25519.age
+
+```bash
+cd ssh
+age -d -o .ssh/id_ed25519 id_ed25519.age # encrypted with age -p -o id_ed25519.age .ssh/id_ed25519 
+chmod 600 id_ed25519
+cd ..
+```
+
+> 🔑 You will be prompted to enter the decryption passphrase.
+
+---
+
+### 3. Apply the SSH config using `stow`
+
+```bash
+stow ssh
+```
+
+This will symlink the `ssh/` directory to `~/.ssh/`, making your SSH keys and configs available to your system.
+
+---
+
+## 📁 Folder Structure
+
+Your repository should look like this:
+
+```
+~/.dotfiles/
+├── ssh/
+│   ├── config              # SSH client config (optional)
+│   ├── id_ed25519.age      # Encrypted private key (safe to push)
+│   ├── id_ed25519.pub      # Public key (safe to push)
+│   └── id_ed25519          # Decrypted private key (DO NOT commit)
+```
+
+---
+
+## 🔒 Security Notes
+
+* 🔥 **Never commit the unencrypted `id_ed25519`** to your repository.
+* ☁️ Keep your dotfiles repository **private** if you store sensitive configs.
+* 🛡 Always use a **strong passphrase** when encrypting with `age`.
+* 🧼 After setup, delete temporary decrypted copies if you're not using `ssh-agent`.
+
+---
+
+## ♻️ Re-encrypt the SSH Key (Optional)
+
+If you regenerate or update your SSH key, re-encrypt it using:
+
+```bash
+age -p -o ssh/id_ed25519.age ~/.ssh/id_ed25519
+```
+
+Then test decryption:
+
+```bash
+age -d -o /tmp/test_id_ed25519 ssh/id_ed25519.age
+```
+
+Make sure it matches the original before pushing to Git.
+
+---
+
+## ✅ Recommended SSH Key Type
+
+This repository uses:
+
+* 🔐 `ed25519`: A modern, fast, and secure elliptic-curve algorithm for SSH
+* It’s preferred over RSA for most use cases
+
+---
+
+## 📬 Contact
+
+Created and maintained by **Saman Yaghoobi**
+Email: `saaman.yaghoobi@gmail.com`
+Work: `s.yaghoobi@sinacomsys.com`

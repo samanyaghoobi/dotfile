@@ -1,0 +1,28 @@
+# Ignore all SSH keys and sensitive files
+# .ssh/*
+# !.ssh/config  # Keep the SSH config file
+# Ignore other sensitive files
+/.ssh/authorized_keys
+/.ssh/known_hosts
+/.ssh/git
+id_ed25519
+*.pem
+*.key
+
+# Ignore backup files
+*~
+*.bak
+*.swp
+
+# Ignore system files
+.DS_Store
+Thumbs.db
+
+# Ignore log files
+*.log
+
+# Ignore temporary files
+tmp/
+temp/
+
+

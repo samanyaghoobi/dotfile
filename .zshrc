@@ -21,8 +21,8 @@ zinit ice compile
 zinit light zdharma-continuum/fast-syntax-highlighting
 
 # zsh-autocomplete (for advanced auto-completion)
-zinit ice compile
-zinit light marlonrichert/zsh-autocomplete
+#zinit ice compile
+#zinit light marlonrichert/zsh-autocomplete
 
 # Git prompt (with git status)
 zinit ice blockf pick"zshrc.sh"
@@ -48,15 +48,20 @@ export GIT_PROMPT_END="]"
 #      Prompt & Header Line
 # ============================
 
+
 # Show Git status if in a Git repo
 function git_prompt() {
   if git rev-parse --is-inside-work-tree &>/dev/null; then
     local branch git_status_symbol
     branch=$(git symbolic-ref --short HEAD 2>/dev/null || git rev-parse --short HEAD)
-    git_status_symbol="%F{green}✓%f"
+
+    # Check for uncommitted changes
     if [[ -n "$(git status --porcelain 2>/dev/null)" ]]; then
       git_status_symbol="%F{red}✗%f"
+    else
+      git_status_symbol="%F{green}✓%f"
     fi
+
     echo " %F{yellow}[ $branch $git_status_symbol]%f"
   fi
 }
@@ -73,6 +78,7 @@ function precmd() {
 # Main Prompt
 PROMPT='%F{green}%~%f$(git_prompt) %F{blue}»%f '
 RPROMPT='%F{242}%n@%m%f'
+
 
 # ============================
 #       Shared History

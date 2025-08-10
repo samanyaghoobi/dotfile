@@ -1,9 +1,11 @@
-scripts
+^README$
+^hotspot-recover\.sh$
+^\.ssh/authorized_keys$
+^\.ssh/known_hosts$
+^\.ssh/git$
+^id_ed25519$
+\.log$
+^tmp/
+^temp/
+^.git
 
-
-.git/*
-README
-hotspot-recover.sh
-.gitignore
-/.ssh/authorized_keys
-/.ssh/known_hosts

@@ -73,3 +73,11 @@ else
     fi
 fi
 unset __conda_setup
+# ----------------------------
+#     Flutter 
+# ----------------------------
+FLUTTER_PATH="/home/saman/deployment/flutter/bin"
+
+if [ -d "$FLUTTER_PATH" ] && [[ ":$PATH:" != *":$FLUTTER_PATH:"* ]]; then
+    export PATH="$PATH:$FLUTTER_PATH"
+fi

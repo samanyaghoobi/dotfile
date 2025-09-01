@@ -5,9 +5,9 @@ alias zshConfig='nano ~/.zshrc'
 alias lss='eza'
 alias frEnable="setxkbmap -layout us,ir -option 'grp:alt_shift_toggle'"
 alias ipa='ip -c a'
-# SSH Aliases
 
 alias gitPushNoEdite="git add . && git commit --amend --no-edit && git push -f origin HEAD"
 alias banchmark="wget -qO- bench.sh | bash"
 
 alias sinaAuth="WINEPREFIX=~/.wine-sina wine ~/.wine-sina/drive_c/Program\ Files/Sina/Sina\ Communication\ System\ Co/SinaAutomation.exe"
+alias mountNFS="sudo mkdir -p /nfs-share/tools/bin && sudo mount artifactory.sinacomsys.local:/nfs-share/tools/bin /nfs-share/tools/bin && export PATH=$PATH:/nfs-share/tools/bin"

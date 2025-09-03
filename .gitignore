@@ -27,3 +27,4 @@ temp/
 
 
 /.ssh/config_local
+/.ssh/github

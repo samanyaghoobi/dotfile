@@ -1,0 +1,68 @@
+##### 🔁 Reload Config #####
+# Reload config with prefix + r
+bind r source-file ~/.tmux.conf \; display-message "Reloaded .tmux.conf"
+
+##### 📟 Core Settings #####
+set -g default-terminal "tmux-256color"
+set -g base-index 1
+setw -g pane-base-index 1
+set -g status-left-length 100
+set -g status-right-length 100
+set -g status-left ""
+#set -g status-position down
+
+##### 🔌 Plugins (TPM) #####
+# Install plugins with prefix + I
+set -g @plugin 'tmux-plugins/tpm'
+set -g @plugin 'tmux-plugins/tmux-sensible'
+set -g @plugin 'catppuccin/tmux#v2.1.3'
+set -g @plugin 'rickstaa/tmux-notify'
+
+##### 🎨 Catppuccin Theme #####
+set -g @catppuccin_flavor "mocha"
+
+# Window styling
+set -g @catppuccin_window_status_style "rounded"
+set -g @catppuccin_window_current_status_style "rounded"
+set -g @catppuccin_window_text "#[italic]#{window_name}"
+set -g @catppuccin_window_number "#I"
+set -g @catppuccin_window_current_text "#[bold]#{window_name} "
+set -g @catppuccin_window_current_number "#I"
+set -g @catppuccin_window_number_position "left"
+
+# Window flags
+set -g @catppuccin_window_flags "icon"
+set -g @catppuccin_window_flags_icon_last "󰖰"
+set -g @catppuccin_window_flags_icon_current "󰖯"
+set -g @catppuccin_window_flags_icon_zoom "󰁌"
+set -g @catppuccin_window_flags_icon_mark "󰃀"
+set -g @catppuccin_window_flags_icon_silent "󰂛"
+set -g @catppuccin_window_flags_icon_activity "󱅫"
+set -g @catppuccin_window_flags_icon_bell "󰂞"
+set -g @catppuccin_window_flags_icon_format "##{?window_activity_flag,#{E:@catppuccin_window_flags_icon_activity},}##{?window_bell_flag,#{E:@catppuccin_window_flags_icon_bell},}##{?window_silence_flag,#{E:@catppuccin_window_flags_icon_silent},}##{?window_active,#{E:@catppuccin_window_flags_icon_current},}##{?window_last_flag,#{E:@catppuccin_window_flags_icon_last},}##{?window_marked_flag,#{E:@catppuccin_window_flags_icon_mark},}##{?window_zoomed_flag,#{E:@catppuccin_window_flags_icon_zoom},} "
+
+# Status line
+set -g @catppuccin_status_ip "#(hostname -I | awk '{print $1}')"
+set -g @catppuccin_status_ip_remote "#(if [ -n \"$SSH_CONNECTION\" ]; then echo $SSH_CONNECTION | awk '{print $3}'; else echo 'No SSH'; fi)"
+set -g @catppuccin_status_left_separator ""
+set -g @catppuccin_status_middle_separator ""
+set -g @catppuccin_status_right_separator "█"
+set -g @catppuccin_status_connect_separator "yes"
+set -g @catppuccin_status_fill "icon"
+set -g @catppuccin_status_module_bg_color "#{@thm_surface_0}"
+set -ag status-right "#{E:@catppuccin_status_application}"
+set -ag status-right "#{E:@catppuccin_status_session}"
+set -ag status-right "#{E:@catppuccin_status_uptime}"
+
+# Pane styling
+set -g @catppuccin_pane_status_enabled "yes"
+set -g @catppuccin_pane_border_status "yes"
+set -g @catppuccin_pane_left_separator "█"
+set -g @catppuccin_pane_middle_separator "█"
+set -g @catppuccin_pane_right_separator "█"
+set -g @catppuccin_pane_default_text "##{b:pane_current_path}"
+set -g @catppuccin_pane_default_fill "number"
+set -g @catppuccin_pane_number_position "left"
+
+##### 🚀 Initialize TPM (must be last) #####
+run '~/.tmux/plugins/tpm/tpm'

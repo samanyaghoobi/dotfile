@@ -1,7 +1,8 @@
 # ============================
 #        ZSH Configuration
 # ============================
-
+source ~/.aliases
+source ~/.zsh_aliases
 # ----------------------------
 #     ZSH Environment Variables
 # ----------------------------
@@ -74,10 +75,16 @@ else
 fi
 unset __conda_setup
 # ----------------------------
-#     Flutter 
+#     Flutter
 # ----------------------------
 FLUTTER_PATH="/home/saman/deployment/flutter/bin"
-
+export PATH="$PATH":"$HOME/.pub-cache/bin"
 if [ -d "$FLUTTER_PATH" ] && [[ ":$PATH:" != *":$FLUTTER_PATH:"* ]]; then
     export PATH="$PATH:$FLUTTER_PATH"
 fi
+
+## [Completion]
+## Completion scripts setup. Remove the following line to uninstall
+[[ -f /home/saman/.dart-cli-completion/zsh-config.zsh ]] && . /home/saman/.dart-cli-completion/zsh-config.zsh || true
+## [/Completion]
+

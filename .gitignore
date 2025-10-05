@@ -25,6 +25,9 @@ Thumbs.db
 tmp/
 temp/
 
-
 /.ssh/config_local
 /.ssh/github
+
+# FVM Version Cache
+.fvm/
+*.old

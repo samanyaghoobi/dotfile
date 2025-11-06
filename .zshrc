@@ -75,11 +75,31 @@ source $ZSH/oh-my-zsh.sh
 # ----------------------------
 #     Conda Initialization
 # ----------------------------
-if [ ! -d "/home/saman/miniconda3" ]; then
-wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/.Miniconda.sh
-bash ~/.Miniconda.sh
-rm ~/.Miniconda.sh
+if command -v conda &> /dev/null; then
+    :
+else
+    if [ ! -d "/home/saman/miniconda3" ]; then
+        wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/.Miniconda.sh
+        bash ~/.Miniconda.sh -b -p /home/saman/miniconda3
+        rm ~/.Miniconda.sh
+    fi
+# export PATH="/home/saman/miniconda3/bin:$PATH"  # commented out by conda initialize
 fi
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/saman/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/saman/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/saman/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/saman/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
 # ----------------------------
 #     Flutter
 # ----------------------------
@@ -94,4 +114,19 @@ fi
 [[ -f /home/saman/.dart-cli-completion/zsh-config.zsh ]] && . /home/saman/.dart-cli-completion/zsh-config.zsh || true
 ## [/Completion]
 
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/saman/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/saman/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/saman/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/saman/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
 
